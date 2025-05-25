@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-
+import { supabase } from "@/lib/supabase"
 import { useState } from "react"
 import Link from "next/link"
 import { useRouter, usePathname } from "next/navigation"
@@ -18,9 +18,13 @@ export function Sidebar() {
   const handleMouseEnter = () => setExpanded(true)
   const handleMouseLeave = () => setExpanded(false)
 
-  const handleLogout = () => {
-    // In a real app, you would clear auth tokens/cookies here
-    router.push("/register")
+  const HandleLogout = async () => {
+    const { data, error } = await supabase.auth.signOut()
+    if (error) {
+      console.error('Login error:', error.message)
+    } else {
+      router.push('/register') // or wherever after login
+    }
   }
 
   return (
@@ -99,7 +103,7 @@ export function Sidebar() {
         </li>
         <li className="list-none">
           <button
-            onClick={handleLogout}
+            onClick={HandleLogout}
             className={cn(
               "flex items-center py-2 px-4 rounded-md hover:bg-white/10 transition-colors w-full",
               !expanded && "justify-center",

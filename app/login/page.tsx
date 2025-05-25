@@ -102,7 +102,7 @@ export default function LoginPage() {
           window.dispatchEvent(new Event("storage"))
 
           // Redirect to dashboard
-          router.push("/dashboard")
+          router.push("/admin")
           return
         }
 
@@ -126,7 +126,7 @@ export default function LoginPage() {
           window.dispatchEvent(new Event("storage"))
 
           // Redirect to dashboard
-          router.push("/dashboard")
+          router.push("/admin")
         }
       }
     } catch (error: any) {
