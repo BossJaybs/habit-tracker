@@ -1,8 +1,8 @@
 import { createClient } from "@supabase/supabase-js"
 
 // Default fallback values for development (these won't work in production)
-const FALLBACK_URL = "https://xtltkijadqetdcnphujr.supabase.co"
-const FALLBACK_KEY = "your-anon-key"
+const FALLBACK_URL = "https://xtltkijadqetdcnphujr.supabase.co/auth/v1/callback"
+const FALLBACK_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0bHRraWphZHFldGRjbnBodWpyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDc5MzcwMTQsImV4cCI6MjA2MzUxMzAxNH0.yiel9RB9Z_aQzyj4qcb9OfH-vzFVlEGDaXvE5TPOItk"
 
 // Get environment variables with fallbacks
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || FALLBACK_URL
