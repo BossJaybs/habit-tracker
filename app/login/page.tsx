@@ -72,8 +72,7 @@ export default function LoginPage() {
           throw new Error("Invalid admin credentials. Please use admin@example.com and admin123.")
         }
 
-        // Admin login - always use demo mode for admin
-        // This ensures it works even if Supabase auth fails
+        // Set admin data in localStorage
         localStorage.setItem("firstName", "Admin")
         localStorage.setItem("lastName", "User")
         localStorage.setItem("isAdmin", "true")
@@ -102,7 +101,7 @@ export default function LoginPage() {
           window.dispatchEvent(new Event("storage"))
 
           // Redirect to dashboard
-          router.push("/admin")
+          router.push("/dashboard")
           return
         }
 
@@ -126,7 +125,7 @@ export default function LoginPage() {
           window.dispatchEvent(new Event("storage"))
 
           // Redirect to dashboard
-          router.push("/admin")
+          router.push("/dashboard")
         }
       }
     } catch (error: any) {
@@ -135,20 +134,6 @@ export default function LoginPage() {
     } finally {
       setIsLoading(false)
     }
-  }
-
-  // Direct admin login function
-  const handleDirectAdminLogin = () => {
-    // Set admin data in localStorage
-    localStorage.setItem("firstName", "Admin")
-    localStorage.setItem("lastName", "User")
-    localStorage.setItem("isAdmin", "true")
-
-    // Trigger storage event for other components
-    window.dispatchEvent(new Event("storage"))
-
-    // Use window.location for a hard redirect
-    window.location.href = "/admin"
   }
 
   return (
